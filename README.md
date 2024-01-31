@@ -12,3 +12,7 @@
 ``` git rm -r --cached . ```
 ``` git add . ```
 ``` git commit -m "Update .gitignore" ```
+
+## နောက်ဆုံး commit 2 ခုကို ဖျက်ဖို့
+``` git reset --hard HEAD~2 ``` 1ခုဆို HEAD~1
+``` git push -f origin <branch-name> ``` 
