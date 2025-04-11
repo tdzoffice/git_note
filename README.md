@@ -56,3 +56,41 @@ To add the changes from the `develop_tdz` branch to the `master` branch, you can
    ```
 
 Now, the changes from `develop_tdz` should be successfully added to `master`. Let me know if you encounter any issues!
+
+ သုံးခုလုံး—`develop_tdz`, `develop_nhl`, တို့ကို `master` နဲ့ **forcefully** အတူတူလုပ်ချင်တယ်? ဒါဆိုတော့ လုပ်ဆောင်ရန်အဆင့်တွေကို step by step ပြောပေးမယ်နော်။
+
+---
+
+### ✅ Step 1: Checkout `master` branch (အရင် base branch မှာရှိဖို့လိုတယ်)
+
+```bash
+git checkout master
+git pull origin master   # make sure it's up to date
+```
+
+---
+
+### ✅ Step 2: Forcefully reset `develop_tdz` and `develop_nhl` to `master`
+
+#### For `develop_tdz`
+```bash
+git checkout develop_tdz
+git reset --hard master
+git push origin develop_tdz --force
+```
+
+#### For `develop_nhl`
+```bash
+git checkout develop_nhl
+git reset --hard master
+git push origin develop_nhl --force
+```
+
+---
+
+### 🧠 အရေးကြီးသော သတိပေးချက်
+- `reset --hard` က local history ပြီးပြီဆိုတာပဲ ဖြစ်တယ်။  
+- `--force` push လုပ်တဲ့အခါမှာ remote မှာရှိတဲ့ commits တွေ မတော်တဆ delete သွားနိုင်လို့ သတိထားပါနော်။
+- သင့် project မှာ teamwork လုပ်နေတယ်ဆိုရင် teammates တွေကို အကြောင်းကြားပေးဖို့လိုပါတယ်။
+
+---
