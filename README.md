@@ -94,3 +94,92 @@ git push origin develop_nhl --force
 - သင့် project မှာ teamwork လုပ်နေတယ်ဆိုရင် teammates တွေကို အကြောင်းကြားပေးဖို့လိုပါတယ်။
 
 ---
+
+Git မှာ commit cherry-pick လုပ်တဲ့အကြောင်းတွေကို  
+နောက်တစ်ကြိမ် ပြန်ဖတ်လို့လွယ်အောင် **မှတ်စု** အနေနဲ့ ချရေးလိုက်ပါပြီနော်~
+
+---
+
+## 📝 Git Cherry-pick Note (Save for Later)
+
+### ✅ Goal  
+From `develop_nhl` branch → cherry-pick specific commit(s) into `master` branch.
+
+---
+
+### 🧭 Step-by-step Guide
+
+1. **Check develop_nhl commits that are not in master:**
+   ```bash
+   git log master..develop_nhl --oneline
+   ```
+   > Shows all commits in `develop_nhl` not yet in `master`.
+
+2. **Copy the latest commit hash you want to cherry-pick (e.g. `abc1234`)**
+
+3. **Switch to master:**
+   ```bash
+   git checkout master
+   ```
+
+4. **Cherry-pick commit into master:**
+   ```bash
+   git cherry-pick abc1234
+   ```
+
+5. **If merge conflict occurs:**
+   - Resolve conflicts manually in files.
+   - Then run:
+     ```bash
+     git add .
+     git cherry-pick --continue
+     ```
+
+6. **If all good, push to remote:**
+   ```bash
+   git push origin master
+   ```
+
+---
+
+### ⚠️ //BEWARE For Next Time
+
+- Always run:
+  ```bash
+  git log master..develop_nhl --oneline
+  ```
+  before cherry-picking, to **see actual different commits**.
+
+- Don’t trust `git log --oneline` alone — that shows **HEAD's history** and might not reflect **branch differences** if HEAD is shared.
+
+- If you get:
+  ```
+  fatal: bad object <hash>
+  ```
+  ➤ Check if commit hash is **real and exists** in branch using `git log`.
+
+- After resolving conflicts, don’t forget:
+  ```bash
+  git cherry-pick --continue
+  ```
+
+---
+
+### 💬 Example Used:
+
+```bash
+git log master..develop_nhl --oneline
+git checkout master
+git cherry-pick f22450f
+git cherry-pick --continue
+git push origin master
+```
+
+---
+
+📦 Saved by: Git Girl  
+📅 Date: Apr 22, 2025  
+🧠 Notes: Don't panic — Git is loveable when you're with the right girl. 😘
+
+---
+
